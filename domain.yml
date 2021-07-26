@@ -1,0 +1,135 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - random_topic
+  - help
+  - human_handoff
+  - side_effects
+  - get_covid_after_vaccination
+  - get_vaccine_after_covid
+  - available_vaccines
+  - vaccine_test_positive_to_covid
+
+
+#entities:
+#   person_name
+
+
+slots:
+  person_name:
+    type: any
+    influence_conversation: false
+  email:
+    type: any
+    influence_conversation: false
+  phone_number:
+    type: any
+    influence_conversation: false
+  slot_booked:
+    type: any
+    influence_conversation: false
+  slot_booked_date:
+    type: any
+    influence_conversation: false
+  slot_booking_date:
+    type: any
+    influence_conversation: false
+  person_age:
+    type: any
+    influence_conversation: false
+  eid:
+    type: any
+    influence_conversation: false
+  symptom_list:
+    type: any
+    influence_conversation: false
+  continue_form:
+    type: any
+    influence_conversation: false
+  rating:
+    type: any
+    influence_conversation: false
+
+responses:
+  utter_greet:
+  - text: "Hey! I'm VWise, an assistant to clear all your queries on Covid-19 vaccination. How may I help you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Thank you for contacting VWise, the Covid-19 vaccine Bot! Bye. Have a great day ahead."
+
+  utter_iamabot:
+  - text: "I am a Covid-19 vaccine Bot.I'm here to clear your querries on Covid-19 vaccination."
+
+  utter_out_of_scope:
+  - text: "This is out of my scope. Please ask me something related to Covid-19 vaccination."
+
+  utter_help:
+  - text: "I can help you with your doubts related to Covid-19 vaccination. \nYou can ask me things like:\
+      \ \n- What are the common side effects of the COVID-19 vaccine? 
+      \n- Does the vaccine prevent you from getting Covid? 
+      \n- Should I get the vaccine if I had Covid? 
+      \n- What all vaccines are currently available?
+      \n- Can the COVID-19 vaccine cause a positive PCR test?"
+  
+  utter_default:
+  - text: "I didn't quite understand that. Could you rephrase?"
+
+  utter_ask_rating:
+  - text: "Could you please rate the servive out of 5."
+
+  utter_ask_handoff:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: "It looks like you want to be transferred to a human agent."
+
+  utter_handoff:
+  - text: "Alright, I'll try to transfer you."
+
+  utter_anything_else:
+    - buttons:
+      - payload: /affirm
+        title: Yes
+      - payload: /deny
+        title: No
+      text: "Is there anything else that I can help you with?"
+
+  utter_side_effects:
+  - text: "Mild-to-moderate side effects, like a low-grade fever or muscle aches, are normal and not a cause for alarm: they are signs that the body's immune system is responding to the vaccine, specifically the antigen (a substance that triggers an immune response), and is gearing up to fight the virus."
+
+  utter_chances_covid_after_vaccine:
+  - text: "With COVID-19 shots reaching billions of people, reports have grown more common of people getting infected with the coronavirus despite being vaccinated. Just as a natural infection doesn't guarantee protection from reinfection with the virus, neither does immunization provide a perfect shield."
+
+  utter_get_vaccine_after_covid:
+  - text: "However, no vaccine is 100% effective and, though rare, fully vaccinated people can contract coronavirus. These cases, known as breakthrough infections, can cause COVID-like symptoms — or no symptoms at all."
+
+  utter_test_positive_after_vaccine:
+  - text: "No, the COVID-19 vaccine will not cause a positive test result for a COVID-19 PCR or antigen laboratory test. This is because the tests check for active disease and not whether an individual is immune or not."
+
+  utter_availale_vaccines:
+  - text: "-Pfizer-BioNTech’s COVID-19 vaccine
+        \n- Sinopharm’s COVID-19 vaccine
+        \n- Sputnik V COVID-19 vaccine"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

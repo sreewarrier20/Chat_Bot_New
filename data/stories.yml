@@ -1,0 +1,59 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: say i'm a bot when user challenges the bot
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: say out of scope, if user say a random topic
+  steps:
+  - intent: random_topic
+  - action: utter_out_of_scope
+
+- story: help user with some question suggestions that he can ask the bot
+  steps:
+  - intent: help
+  - action: utter_help
+
+- story: connect to a human agent, need to collect phone number and email id, store it in slots
+  steps:
+  - intent: human_handoff
+  - action: utter_ask_handoff
+  - intent: affirm
+  - action: utter_handoff
+  - intent: deny
+  - action: utter_anything_else
+  - intent: affirm
+  - action: utter_happy
+  - intent: deny
+  - action: utter_goodbye
+  - action: utter_ask_rating
