@@ -16,15 +16,19 @@ intents:
   - get_vaccine_after_covid
   - available_vaccines
   - vaccine_test_positive_to_covid
+  - chitchat
+  - vaccine_slot_booking
 
 
-#entities:
-#   person_name
+# entities:
+#    person_name
+#    rating
 
 
 slots:
   person_name:
     type: any
+    initial_value: "Bot user"
     influence_conversation: false
   email:
     type: any
@@ -56,10 +60,22 @@ slots:
   rating:
     type: any
     influence_conversation: false
+  continue_conversation:
+    type: any
+    influence_conversation: false
+    initial_value: "yes"
+  get_time:
+    type: any
+    influence_conversation: false
+    initial_value: "Good Morning"
+    #get the value of time loaded in to the slot using api call; used to dynamically greet the user.
 
 responses:
   utter_greet:
-  - text: "Hey! I'm VWise, an assistant to clear all your queries on Covid-19 vaccination. How may I help you?"
+    - text: "Hey! {get_time} {person_name} I'm VWise, an assistant to clear all your queries on Covid-19 vaccination. How may I help you?"
+    # slack: #text message that follows is applicable only for slack
+    # - text:"Hi"
+    - text: " Hello! {get_time} I'm VWise, an assistant to clear all your queries on Covid-19 vaccination."
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -72,13 +88,19 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Thank you for contacting VWise, the Covid-19 vaccine Bot! Bye. Have a great day ahead."
+  - text: "Thank you {person_name} for contacting VWise, the Covid-19 vaccine Bot! Bye. Have a great day ahead."
 
   utter_iamabot:
   - text: "I am a Covid-19 vaccine Bot.I'm here to clear your querries on Covid-19 vaccination."
 
   utter_out_of_scope:
   - text: "This is out of my scope. Please ask me something related to Covid-19 vaccination."
+
+  utter_chitchat/ask_weather:
+  - text: "I'm not a weather presenter. But I really wish if it rains! :)"
+
+  utter_chitchat/bot_challenger:
+  - text: "I'm a Bot! Created to help you to clear your doubts on vaccination."
 
   utter_help:
   - text: "I can help you with your doubts related to Covid-19 vaccination. \nYou can ask me things like:\
@@ -113,22 +135,28 @@ responses:
         title: No
       text: "Is there anything else that I can help you with?"
 
-  utter_side_effects:
+  utter_faq/side_effects:
   - text: "Mild-to-moderate side effects, like a low-grade fever or muscle aches, are normal and not a cause for alarm: they are signs that the body's immune system is responding to the vaccine, specifically the antigen (a substance that triggers an immune response), and is gearing up to fight the virus."
 
-  utter_chances_covid_after_vaccine:
+  utter_faq/chances_covid_after_vaccine:
   - text: "With COVID-19 shots reaching billions of people, reports have grown more common of people getting infected with the coronavirus despite being vaccinated. Just as a natural infection doesn't guarantee protection from reinfection with the virus, neither does immunization provide a perfect shield."
 
-  utter_get_vaccine_after_covid:
+  utter_faq/get_vaccine_after_covid:
   - text: "However, no vaccine is 100% effective and, though rare, fully vaccinated people can contract coronavirus. These cases, known as breakthrough infections, can cause COVID-like symptoms — or no symptoms at all."
 
-  utter_test_positive_after_vaccine:
+  utter_faq/test_positive_after_vaccine:
   - text: "No, the COVID-19 vaccine will not cause a positive test result for a COVID-19 PCR or antigen laboratory test. This is because the tests check for active disease and not whether an individual is immune or not."
 
-  utter_availale_vaccines:
+  utter_faq/availale_vaccines:
   - text: "-Pfizer-BioNTech’s COVID-19 vaccine
         \n- Sinopharm’s COVID-19 vaccine
         \n- Sputnik V COVID-19 vaccine"
+
+  utter_feedback_ack:
+  - text: "Thank you for your time and feedback."
+
+  utter_slot_booking:
+  - text: "Sorry! {person_name}. We are not providing the requested service. You may download the apps from play store or app store to do it"
 
 session_config:
   session_expiration_time: 60

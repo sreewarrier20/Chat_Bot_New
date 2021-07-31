@@ -34,10 +34,10 @@ stories:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- story: say out of scope, if user say a random topic
-  steps:
-  - intent: random_topic
-  - action: utter_out_of_scope
+# - story: say out of scope, if user say a random topic
+#   steps:
+#   - intent: random_topic
+#   - action: utter_out_of_scope
 
 - story: help user with some question suggestions that he can ask the bot
   steps:
@@ -57,3 +57,24 @@ stories:
   - intent: deny
   - action: utter_goodbye
   - action: utter_ask_rating
+    #slot_was_set: rating: {rating}
+
+- story: ask anything else to help with if the user says thank you
+  steps: 
+    - intent: goodbye 
+    - action: utter_anything_else
+    - intent: affirm
+    - action: utter_happy
+      #slot_was_set: continue_conversation: "true"
+    - intent: deny
+    - action: utter_goodbye
+    - action: utter_ask_rating
+      #slot_was_set: continue_conversation: "false"
+      #if the input is a number give the acknowledgement messge to the user.
+    - action: utter_feedback_ack
+      #communication ends here, close the dialogue if required.
+- story:
+  steps:
+    - intent: vaccine_slot_booking
+    - action: utter_slot_booking
+    - action: utter_anything_else

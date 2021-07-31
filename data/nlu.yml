@@ -34,6 +34,9 @@ nlu:
     - welcome
     - howdy
     - good day
+    - Hello I'm {person_name}
+    - Hai it's {person_name}
+    - Hello {person_name} here.
 
 - intent: goodbye
   examples: |
@@ -227,6 +230,7 @@ nlu:
     - are you robot
     - are you sure that you're a bot?
     - bot?
+    - What is your name?
 
 - intent: random_topic
   examples: |
@@ -306,39 +310,91 @@ nlu:
     - let me speak to a real person please
     - i want to talk to a real person
 
-- intent: side_effects
+# - intent: side_effects
+#   examples: |
+#     - What are the side effects of Covid-19 vaccine?
+#     - Will the vaccines have some side effects?
+#     - Is it safe to take vaccines?
+#     - Which vaccines are safe to use?
+#     - Are vaccines safe to use?
+
+# - intent: get_covid_after_vaccination
+#   examples: |
+#     - Is there a chance to get Covid after getting vaccinated?
+#     - How much guarantee can be given that we will not get Covid even after getting vaccinated?
+#     - Will vaccine prevent us from getting Covid?
+
+# - intent: get_vaccine_after_covid
+#   examples: |
+#     - Should I get vaccine after getting Covid?
+#     - After how many months can I take vaccine after recovering from covid?
+#     - Is there a possibility of getting covid the second time?
+#     - Why are vaccinated people still getting covid?
+
+# - intent: available_vaccines
+#   examples: |
+#     - What are the available vaccines in MENA region?
+#     - What all vaccines are approved by DHA
+#     - List me the available vaccines
+  
+# - intent: vaccine_test_positive_to_covid
+#   examples: |
+#     - Will vaccine test positive to Covid?
+#     - Will I be shown positive to covid test after taking vaccine?
+#     - Will PCR test show positive results after vaccination?
+#     - Will antigen test show positive results after vaccination?
+
+- intent: chitchat/ask_weather
+  examples: |
+    - What's the weather outside?
+    - Can you tell me the weather
+    - What is the weather forecast for tomorrow?
+    - Tell me the weather
+    - What is the weather for tomorrow
+    - May I know the weather?
+- intent: chitchat/bot_challenger
+  examples: |
+    - Am I talking to the chat bot?
+    - Are you a bot or human
+    - I think you are a bot
+
+- intent: vaccine_slot_booking
+  examples: |
+    - Book me a slot for vaccination
+    - Please help me in getting a slot booked for vaccination
+    - Make a vaccination slot booking
+    - Reserve me a vaccine slot
+- intent: faq/side_effects
   examples: |
     - What are the side effects of Covid-19 vaccine?
     - Will the vaccines have some side effects?
     - Is it safe to take vaccines?
     - Which vaccines are safe to use?
+    - Are vaccines safe to use?
 
-- intent: get_covid_after_vaccination
+- intent: faq/chances_covid_after_vaccine
   examples: |
     - Is there a chance to get Covid after getting vaccinated?
     - How much guarantee can be given that we will not get Covid even after getting vaccinated?
     - Will vaccine prevent us from getting Covid?
 
-- intent: get_vaccine_after_covid
+
+- intent: faq/get_vaccine_after_covid
   examples: |
     - Should I get vaccine after getting Covid?
     - After how many months can I take vaccine after recovering from covid?
     - Is there a possibility of getting covid the second time?
     - Why are vaccinated people still getting covid?
 
-- intent: available_vaccines
-  examples: |
-    - What are the available vaccines in MENA region?
-    - What all vaccines are approved by DHA
-    - List me the available vaccines
-  
-- intent: vaccine_test_positive_to_covid
+- intent: faq/test_positive_after_vaccine
   examples: |
     - Will vaccine test positive to Covid?
     - Will I be shown positive to covid test after taking vaccine?
     - Will PCR test show positive results after vaccination?
-    - Will antigen test show positive results after vaccination?
+    - Will antigen test show positive results after vaccination?    
 
-
-
-
+- intent: faq/availale_vaccines
+  examples: |
+    - What are the available vaccines in MENA region?
+    - What all vaccines are approved by DHA
+    - List me the available vaccines
